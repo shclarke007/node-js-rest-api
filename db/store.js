@@ -19,7 +19,7 @@ const conversations = [
     id: 1,
     title: 'Hello',
     messages: {
-      id: 1,
+      id: 0,
       text: 'Hi Mary',
       attachment: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjg2Pig_8PhAhUPkxQKHUHkBBwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.petfinder.com%2Fcat%2Fcashmere-rare-orange-female-38910278%2Fca%2Fsherman-oaks%2Fthe-fuzzy-pet-foundation-ca994%2F&psig=AOvVaw0afZbIGeVdyk4hnOz0jjrE&ust=1554932993248128'
     }

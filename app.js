@@ -3,6 +3,10 @@ import store from './db/store';
 import bodyParser from 'body-parser';
 const app = express();
 
+// Parse incoming requests data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.get('/conversations', (req, res) => {
   console.log('Responding to conversations route');
   res.status(200).send({
@@ -44,6 +48,25 @@ app.delete('/conversations/:id', (req, res) => {
       success: 'false',
       message: 'conversation not found',
     });
+});
+
+app.post('/conversations', (req, res) => {
+  if(!req.body.title) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'title is required'
+    });
+  } 
+ const conversation = {
+   id: store.length + 1,
+   title: req.body.title,
+ }
+ store.push(conversation);
+ return res.status(201).send({
+   success: 'true',
+   message: 'conversation added successfully',
+   store
+ })
 });
 
 app.get('/messages', (req, res) => {
