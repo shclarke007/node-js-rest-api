@@ -11,9 +11,29 @@ app.get('/conversations', (req, res) => {
   });
 });
 
+app.get('/conversations/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  store.map((conversation) => {
+    if (conversation.id === id) {
+      return res.status(200).send({
+        success: 'true',
+        message: 'conversation retrieved successfully',
+        conversation,
+      });
+    } 
+  });
+ return res.status(404).send({
+   success: 'false',
+   message: 'conversation does not exist',
+  });
+});
+
 app.get('/messages', (req, res) => {
   console.log('Responding to messages route');
-  res.status(200).send('JSON file for messages go here');
+  res.status(200).send({
+    success: 'true',
+    message: 'messages retrieved succesfully'
+  });
 });
 
 const PORT = 5000;
