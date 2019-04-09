@@ -69,6 +69,44 @@ app.post('/conversations', (req, res) => {
  })
 });
 
+app.put('/conversations/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  let conversationFound;
+  let itemIndex;
+  store.map((conversation, index) => {
+    if (conversation.id === id) {
+      conversationFound = conversation;
+      itemIndex = index;
+    }
+  });
+
+  if (!conversationFound) {
+    return res.status(404).send({
+      success: 'false',
+      message: 'conversation not found',
+    });
+  }
+  if (!req.body.title) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'title is required',
+    });
+  }
+
+  const updatedConversation = {
+    id: conversationFound.id,
+    title: req.body.title || conversationFound.title
+  };
+
+  store.splice(itemIndex, 1, updatedConversation);
+
+  return res.status(201).send({
+    success: 'true',
+    message: 'conversation added successfully',
+    updatedConversation,
+  });
+});
+
 app.get('/messages', (req, res) => {
   console.log('Responding to messages route');
   res.status(200).send({
