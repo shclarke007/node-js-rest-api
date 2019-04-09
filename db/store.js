@@ -2,11 +2,18 @@ const conversations = [
   {
     id: 0,
     title: 'Something about cats',
-    messages: {
-      id: 0,
-      text: 'My cat is here',
-      timeStamp: '2018-08-06'
-    }
+    messages: [
+      {
+        id: 0,
+        text: 'My cat is here',
+        timeStamp: '2018-08-06'
+      },
+      {
+        id: 1,
+        text: 'Yeah, I know',
+        timeStamp: '2018-08-06'
+      }
+    ]
   },
   {
     id: 1,
