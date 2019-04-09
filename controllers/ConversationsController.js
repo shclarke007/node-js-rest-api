@@ -1,4 +1,4 @@
-import store from '../db/store';
+import store from '../db/conversationsStore';
 
 class ConversationsController {
   getAllConversations(req, res) {
