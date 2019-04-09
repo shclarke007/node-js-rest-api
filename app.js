@@ -1,5 +1,6 @@
 import express from 'express';
 import store from './db/store';
+import bodyParser from 'body-parser';
 const app = express();
 
 app.get('/conversations', (req, res) => {
