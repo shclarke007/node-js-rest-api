@@ -2,7 +2,6 @@ import store from '../db/messagesStore';
 
 class MessagesController {
   getAllMessages(req, res) {
-    console.log('Responding to messages route');
     res.status(200).send({
       success: 'true',
       message: 'messages retrieved succesfully',
@@ -54,7 +53,8 @@ class MessagesController {
     const newMessage = {
       id: store.length + 1,
       text: req.body.text,
-      attachment: req.body.attachment
+      attachment: req.body.attachment,
+      conversationId: req.body.conversationId
     };
     store.push(newMessage);
     return res.status(201).send({
@@ -81,7 +81,7 @@ class MessagesController {
         message: 'message not found'
       });
     }
-    if (!req.body.text) {
+    if (!req.body.text || !req.body.conversationId) {
       return res.status(400).send({
         success: 'false',
         message: 'text body is required'
