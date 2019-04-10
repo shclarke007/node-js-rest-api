@@ -20,6 +20,15 @@ The page will reload if you make edits using `nodemon`.<br>
  - Basic object validation should occur upon hitting the API.
 
  ### Notes
- 
+#### success 
+ - Implementing a structure for messages and conversations using local JSON files.
+ - Messages support text and basic attachments such as videos, images and emoji buttons. 
+ - Conversations reference messages by an id and title.
+ - CRUD operations are able to be performed on /messages and /conversations endpoints. i.e. messages and conversations can be created, read individually and all, updated and deleted.
+ - Basic validation for /messages and /conversations endpoint when POST operation occurs. Title or text is required. Status messages are sent if successful and unsuccessful. 
+
+ #### unsuccessful
+ - Unable to use query parameters against the /messages endpoint to be able to retrieve messages from a certain conversation only. Not familiar with how to create referential integrity relationship with json data.
+
 
 
